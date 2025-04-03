@@ -42,8 +42,8 @@ function mooify() {
                 words[lastIndex] = words[lastIndex] + "-MOO";
             }
             
-            // Join the words with underscores instead of spaces
-            sentences[i] = words.join("_");
+            // Join the words back with spaces (not underscores)
+            sentences[i] = words.join(" ");
         }
     }
     
@@ -52,5 +52,4 @@ function mooify() {
     
     // Update the textarea
     textArea.value = text;
-}
 }
