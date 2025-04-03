@@ -1,6 +1,6 @@
 function makeBigger() {
-    // Change text area font size to 24pt
-    document.getElementById("userText").style.fontSize = "24pt";
+    var textArea = document.getElementById("userText");
+    textArea.style.fontSize = "24pt";
 }
 
 function changeStyle() {
@@ -8,14 +8,31 @@ function changeStyle() {
     var fancyRadio = document.getElementById("fancyShmancy");
     
     if (fancyRadio.checked) {
-        // Apply FancyShmancy styles
         textArea.style.fontWeight = "bold";
         textArea.style.color = "blue";
         textArea.style.textDecoration = "underline";
+        alert("Fancy style activated!");
     } else {
-        // Apply BoringBetty styles (reset to normal)
         textArea.style.fontWeight = "normal";
-        textArea.style.color = "";
-        textArea.style.textDecoration = "";
+        textArea.style.color = "black";
+        textArea.style.textDecoration = "none";
     }
+}
+
+function mooify() {
+    var textArea = document.getElementById("userText");
+    var text = textArea.value;
+    
+    text = text.toUpperCase();
+    
+    // Add "-Moo" to the end of each sentence
+    var sentences = text.split(".");
+    for (var i = 0; i < sentences.length - 1; i++) {
+        if (sentences[i].trim().length > 0) {
+            sentences[i] = sentences[i].trim() + "-Moo";
+        }
+    }
+    text = sentences.join(". ");
+    
+    textArea.value = text;
 }
