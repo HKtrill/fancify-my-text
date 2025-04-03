@@ -26,23 +26,31 @@ function mooify() {
     // Convert text to uppercase
     text = text.toUpperCase();
     
-    // Add "-Moo" to the end of each sentence
+    // Split the text into sentences
     var sentences = text.split(".");
-    for (var i = 0; i < sentences.length - 1; i++) {
+    
+    // Process each sentence
+    for (var i = 0; i < sentences.length; i++) {
+        // If this isn't an empty string
         if (sentences[i].trim().length > 0) {
-            // Find the last word in the sentence and add "-Moo" to it
+            // Split the sentence into words
             var words = sentences[i].trim().split(" ");
+            
+            // Add "-MOO" to the last word
             if (words.length > 0) {
-                var lastWordIndex = words.length - 1;
-                words[lastWordIndex] = words[lastWordIndex] + "-MOO";
-                sentences[i] = words.join(" ");
+                var lastIndex = words.length - 1;
+                words[lastIndex] = words[lastIndex] + "-MOO";
             }
+            
+            // Join the words with underscores instead of spaces
+            sentences[i] = words.join("_");
         }
     }
     
-    // Join sentences back together with periods
-    text = sentences.join(". ");
+    // Join the sentences back with periods
+    text = sentences.join(".");
     
-    // Set the modified text back to the textarea
+    // Update the textarea
     textArea.value = text;
+}
 }
